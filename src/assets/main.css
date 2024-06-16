@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('./normalize.css');
+
+:root {
+  --font-family: 'Inter', sans-serif;
+
+  --color-black: #000;
+  --color-white: #fff;
+  --color-solitude: #e7f6ff;
+  --color-gallery: #eaeaea;
+  --color-scorpion: #5c5c5c;
+  --color-silver-chalice: #9d9d9d;
+  --color-alabaster: #f8f8f8;
+  --color-silver: #bdbdbd;
+  --color-concrete: #f2f2f2;
+  --color-bridesmaid: #fef0f0;
+  --color-conifer: #9dd458;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-black);
+  background-color: var(--color-solitude);
+  padding: 85px;
+}
+
+#app {
+  background-color: var(--color-white);
+  border-radius: 20px;
+  max-width: 1080px;
+  margin: 0 auto;
+  box-shadow: 0 10px 20px 0 rgba(0 0 0 / 5%);
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0;
+}
