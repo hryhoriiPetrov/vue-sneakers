@@ -1,19 +1,23 @@
 <script setup>
 import IconSearch from '../icons/icon-search.vue'
+defineProps({
+  onChangeSelect: Function,
+  onChangeInput: Function,
+})
 </script>
 
 <template>
   <div class="catalog__head">
     <h2 class="title catalog__title">Все кроссовки</h2>
     <div class="catalog__filters">
-      <select class="catalog__sort">
-        <option>По названию</option>
-        <option>По цене (дешевые)</option>
-        <option>По цене (дорогие)</option>
+      <select class="catalog__sort" @change="onChangeSelect">
+        <option value="name">По названию</option>
+        <option value="price">По цене (дешевые)</option>
+        <option value="-price">По цене (дорогие)</option>
       </select>
       <div class="catalog__search">
         <icon-search />
-        <input class="catalog__input" type="text" placeholder="Поиск..." />
+        <input class="catalog__input" type="text" placeholder="Поиск..." @input="onChangeInput" />
       </div>
     </div>
   </div>
