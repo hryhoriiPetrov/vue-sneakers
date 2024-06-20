@@ -4,12 +4,21 @@ import CatalogCard from './catalog-card.vue'
 defineProps({
   items: Array,
 })
+
+const emit = defineEmits(['addFavorite'])
 </script>
 
 <template>
   <ul class="cards">
     <li v-for="item in items" :key="item.id">
-      <catalog-card :title="item.title" :imageUrl="item.imageUrl" :price="item.price" />
+      <catalog-card
+        :id="item.id"
+        :title="item.title"
+        :imageUrl="item.imageUrl"
+        :price="item.price"
+        :isFavorite="item.isFavorite"
+        :onClickFavorite="() => emit('addFavorite', item)"
+      />
     </li>
   </ul>
 </template>

@@ -5,6 +5,7 @@ import IconChecked from '../icons/icon-checked.vue'
 import IconFavorite from '../icons/icon-favorite.vue'
 
 defineProps({
+  id: Number,
   title: String,
   imageUrl: String,
   price: Number,
