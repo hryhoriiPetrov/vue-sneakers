@@ -1,19 +1,27 @@
 <script setup>
 import IconCross from '../icons/icon-cross.vue'
+defineProps({
+  id: Number,
+  title: String,
+  imageUrl: String,
+  price: Number,
+  removeFromCart: Function,
+})
 </script>
 
 <template>
   <div class="drawer-product">
-    <img
-      class="drawer-product__img"
-      src="/public/images/sneakers-1.jpg"
-      alt="Мужские Кроссовки Nike Air Max 270"
-    />
+    <img class="drawer-product__img" :src="imageUrl" :alt="title" />
     <div class="drawer-product__details">
-      <span class="drawer-product__title">Мужские Кроссовки Nike Air Max 270</span>
-      <span class="drawer-product__price">12 999 руб.</span>
+      <span class="drawer-product__title">{{ title }}</span>
+      <span class="drawer-product__price">{{ price }} руб.</span>
     </div>
-    <button class="drawer-product__delete" type="button">
+    <button
+      class="drawer-product__delete"
+      type="button"
+      aria-label="Кнопка для удаления товара из корзины"
+      v-on:click="removeFromCart"
+    >
       <icon-cross />
     </button>
   </div>

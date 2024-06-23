@@ -1,9 +1,8 @@
 <script setup>
+import { inject } from 'vue'
 import IconSearch from '../icons/icon-search.vue'
-defineProps({
-  onChangeSelect: Function,
-  onChangeInput: Function,
-})
+
+const { onChangeInput, onChangeSelect } = inject('catalogActions')
 </script>
 
 <template>

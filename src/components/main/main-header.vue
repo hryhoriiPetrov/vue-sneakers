@@ -1,7 +1,11 @@
 <script setup>
+import { inject } from 'vue'
+
 import IconCart from '../icons/icon-cart.vue'
 import IconHeart from '../icons/icon-heart.vue'
 import IconProfile from '../icons/icon-profile.vue'
+
+const { openDrawer, totalPrice } = inject('drawerActions')
 </script>
 
 <template>
@@ -17,10 +21,15 @@ import IconProfile from '../icons/icon-profile.vue'
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <a class="nav__link" href="/">
+            <button
+              class="nav__btn"
+              type="button"
+              aria-label="Кнопка для открытия корзины"
+              v-on:click="openDrawer"
+            >
               <icon-cart />
-              <span>1205 руб.</span>
-            </a>
+              <span>{{ totalPrice }} руб.</span>
+            </button>
           </li>
           <li class="nav__item">
             <a class="nav__link" href="/">
@@ -86,16 +95,24 @@ import IconProfile from '../icons/icon-profile.vue'
   align-items: center;
   gap: 32px;
 }
-.nav__link {
+.nav__link,
+.nav__btn {
   text-decoration: none;
   color: var(--color-scorpion);
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.nav__link svg {
+.nav__link svg,
+.nav__btn svg {
   width: 18px;
   height: 18px;
+}
+.nav__btn {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
 }
 .nav__link:hover {
   text-decoration: underline;

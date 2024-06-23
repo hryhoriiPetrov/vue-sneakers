@@ -1,11 +1,20 @@
 <script setup>
+import { inject } from 'vue'
+
 import IconCross from '../icons/icon-cross.vue'
+
+const { closeDrawer } = inject('drawerActions')
 </script>
 
 <template>
   <div class="drawer__header">
     <h2 class="title drawer__title">Корзина</h2>
-    <button class="drawer__close" type="button">
+    <button
+      class="drawer__close"
+      type="button"
+      aria-label="Кнопка для закрытия корзины"
+      v-on:click="closeDrawer"
+    >
       <icon-cross />
     </button>
   </div>

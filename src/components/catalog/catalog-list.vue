@@ -1,15 +1,14 @@
 <script setup>
+import { inject } from 'vue'
+import { useAutoAnimate } from '@formkit/auto-animate/vue'
 import CatalogCard from './catalog-card.vue'
 
-defineProps({
-  items: Array,
-})
-
-const emit = defineEmits(['addFavorite'])
+const { items, onClickAddToCart, addFavorite } = inject('catalogActions')
+const [parent] = useAutoAnimate()
 </script>
 
 <template>
-  <ul class="cards">
+  <ul class="cards" ref="parent">
     <li v-for="item in items" :key="item.id">
       <catalog-card
         :id="item.id"
@@ -17,7 +16,9 @@ const emit = defineEmits(['addFavorite'])
         :imageUrl="item.imageUrl"
         :price="item.price"
         :isFavorite="item.isFavorite"
-        :onClickFavorite="() => emit('addFavorite', item)"
+        :isAdded="item.isAdded"
+        :onClickFavorite="() => addFavorite(item)"
+        :onClickAdd="() => onClickAddToCart(item)"
       />
     </li>
   </ul>

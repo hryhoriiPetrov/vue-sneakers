@@ -1,5 +1,8 @@
 <script setup>
+import { inject } from 'vue'
 import IconArrowWhite from '../icons/icon-arrow-white.vue'
+
+const { totalPrice, vatPrice, createOrder } = inject('drawerActions')
 </script>
 
 <template>
@@ -7,14 +10,14 @@ import IconArrowWhite from '../icons/icon-arrow-white.vue'
     <ul class="drawer__list">
       <li class="drawer__item">
         <span class="drawer__detail">Итого:</span>
-        <span class="drawer__price">21 498 руб.</span>
+        <span class="drawer__price">{{ totalPrice }} руб.</span>
       </li>
       <li class="drawer__item">
         <span class="drawer__detail">Налог 5%:</span>
-        <span class="drawer__price">1074 руб.</span>
+        <span class="drawer__price">{{ vatPrice }} руб.</span>
       </li>
     </ul>
-    <button class="drawer__buy" type="button">
+    <button class="drawer__buy" type="button" v-on:click="createOrder" :disabled="!totalPrice">
       <span>Оформить заказ</span>
       <icon-arrow-white />
     </button>

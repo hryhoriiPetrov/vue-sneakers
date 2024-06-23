@@ -1,18 +1,20 @@
 <script setup>
+import { inject } from 'vue'
 import DrawerProduct from './drawer-product.vue'
+
+const { cartItems, removeFromCart } = inject('drawerActions')
 </script>
 
 <template>
   <div class="drawer__products">
-    <ul class="drawer__list">
-      <li class="drawer__item">
-        <drawer-product />
-      </li>
-      <li class="drawer__item">
-        <drawer-product />
-      </li>
-      <li class="drawer__item">
-        <drawer-product />
+    <ul class="drawer__list" v-auto-animate>
+      <li class="drawer__item" v-for="cartItem in cartItems" v-bind:key="cartItem.id">
+        <drawer-product
+          :title="cartItem.title"
+          :image-url="cartItem.imageUrl"
+          :price="cartItem.price"
+          :remove-from-cart="() => removeFromCart(cartItem)"
+        />
       </li>
     </ul>
   </div>
